@@ -12,14 +12,16 @@ def character_counter (text):
             characters_dict[char] += 1
     return characters_dict
 
+def get_amount(dict_item):
+    return dict_item['amount']
+
 def sort_on (characters_dict):
-    letters = [
-        {"letter":"test1", "number": 5},
-        {"letter":"test2", "number": 1},
-        {"letter":"test3", "number": 10}
-    ]        
-    #letters.sort(reverse=True, key=sort_on)
-    return letters
+    letters_list = []
+    for letter, amount in characters_dict.items():
+        if letter.isalpha():
+            letters_list.append({"letter":letter, "amount":amount})
+    letters_list.sort(reverse=True, key=get_amount)
+    return letters_list
 
 def main():
     with open("books/frankenstein.txt") as f:
@@ -29,8 +31,7 @@ def main():
 if __name__ == "__main__":
     text = main()
     char_dict = character_counter(text)
-    report = sort_on(char_dict)
-    print('The book has',word_counter(text),'words.')
-    print(report)
+    
+    
 
 
