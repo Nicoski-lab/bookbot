@@ -31,7 +31,16 @@ def main():
 if __name__ == "__main__":
     text = main()
     char_dict = character_counter(text)
-    
+    word_count = word_counter(text)
+    sorted_chars = sort_on(char_dict)
+
+    print("--- Begin report of books/frankenstein.txt ---")
+    print(f"{word_count} words found in the document\n")
+
+    for char_info in sorted_chars:
+        print(f"The '{char_info['letter']}' character was found {char_info['amount']} times")
+
+    print("--- End report ---")
     
 
 
